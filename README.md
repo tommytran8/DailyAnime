@@ -7,6 +7,8 @@ Website that categorizes current Seasonal Anime by the day that they broadcast. 
 
 # Sample Images of Site
 
+The site is currently not deployed!
+
 ## Sunday Tab
 
 ![sundayTab](./assets/sample_site1.PNG)
