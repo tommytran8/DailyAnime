@@ -1,5 +1,5 @@
 # DailyAnime
-Seasonal Anime for a certain day of the week
+Seasonal Anime's broadcast days
 
 # Purpose 
 
