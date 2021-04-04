@@ -22,7 +22,7 @@ app.get('/:data', (req,res)=>{
             console.log("finished scraping MAL!");
         }
         else {
-            console.log("didn't scrape MAL");
+            console.log("didn't need to scrape MAL");
         }
     });
     
