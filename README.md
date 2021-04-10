@@ -5,9 +5,11 @@ Seasonal Anime's broadcast days
 
 Website that categorizes the current seasonal Anime by the day that they broadcast. This project was to help me learn about web-scraping, servers to update databases (local files), and bootstrap for css. In this project I webscraped from the website MyAnimeList to receive the data.
 
-# Sample Images of Site
+# Status
 
 The site is currently not deployed!
+
+# Sample Images of Site
 
 ## Sunday Tab
 
