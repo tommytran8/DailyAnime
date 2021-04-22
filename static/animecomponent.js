@@ -55,11 +55,21 @@ class Animecontainer extends HTMLElement {
             .description {
                 height: 150px;
                 overflow-y: auto;
+                padding: 5px;
+                border: 2px white solid;
+                
             }
 
             .title {
                 font-family: 'Ubuntu', sans-serif;
             }
+
+            @media only screen and (max-width: 530px) {
+                .anime {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+              }
         `
         this.shadowRoot.append(style, container);
     }

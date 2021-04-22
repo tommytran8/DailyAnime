@@ -15,14 +15,6 @@ const client = new MongoClient(url);
 
 const favicon = require('serve-favicon'), path = require("path");
 
-if (process.env.MONGODB_URI){
-  console.log("process env exists");
-  console.log(process.env.MONGODB_URI);
-}
-else {
-  console.log("process env doesn't exist");
-}
-
 app.use(favicon(path.join(__dirname + '/favicon.ico')));
 
 app.listen(process.env.PORT || 5500, () => {
