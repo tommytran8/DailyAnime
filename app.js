@@ -13,6 +13,9 @@ const url = process.env.MONGODB_URI || require("./env.json").URI;
 const dbName = 'DailyAnime';
 const client = new MongoClient(url);
 
+const favicon = require('serve-favicon'), path = require("path");
+
+app.use(favicon(path.join(__dirname + 'favicon.ico')));
 
 app.listen(process.env.PORT || 5500, () => {
   console.log(`App listening at http://localhost:${5500}`);
