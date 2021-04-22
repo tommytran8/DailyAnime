@@ -15,7 +15,7 @@ const client = new MongoClient(url);
 
 const favicon = require('serve-favicon'), path = require("path");
 
-app.use(favicon(path.join(__dirname + 'favicon.ico')));
+app.use(favicon(path.join(__dirname + '/favicon.ico')));
 
 app.listen(process.env.PORT || 5500, () => {
   console.log(`App listening at http://localhost:${5500}`);
