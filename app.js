@@ -9,7 +9,7 @@ app.use(express.static('static'));
 
 // Start up Database
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
+const url = process.env.PORT ? `mongodb://localhost:${process.env.PORT}` : 'mongodb://localhost:27017';
 const dbName = 'DailyAnime';
 const client = new MongoClient(url);
 
