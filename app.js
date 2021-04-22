@@ -10,7 +10,7 @@ app.use(express.static('static'));
 
 // Start up Database
 const MongoClient = require('mongodb').MongoClient;
-const url = URI;
+const url = URI || process.env.MONGODB_URI;
 const dbName = 'DailyAnime';
 const client = new MongoClient(url);
 
