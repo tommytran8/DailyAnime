@@ -1,0 +1,25 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+[class*="col"] {
+    padding: 1rem;
+    background-color: #54b6f1;
+    border: 2px solid white;
+    color: white;
+    /* text-align: center; */
+}
+button {
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+}
+
+#ALL {
+    border: none;
+    background-color: #54b6f1;
+}
+
+#ALL:hover {
+    background-color: #7ec8f7;
+    border-radius: 10%;
+}

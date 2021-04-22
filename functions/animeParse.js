@@ -1,5 +1,6 @@
 const rp = require('request-promise');
 const $ = require('cheerio');
+const getDate = require("./getDate");
 
 function animeParse(url) {
   return rp(encodeURI(url))
@@ -11,11 +12,13 @@ function animeParse(url) {
         day: $('.borderClass > div > .spaceit',  html).children()[2].next.data.trim(),
         description:  $('.js-scrollfix-bottom-rel > table > tbody > tr > td > p', html).text(),
         url: url,
-        popularity: $('.score', html).attr("data-user")
+        popularity: $('.score', html).attr("data-user"),
+        retrievedAt: getDate()
       }
     })
     .catch(function() {
-      console.log("error in converting scraped data to json");
+      // console.error("error in converting scraped data to json");
+      return false
     })
 }
 
