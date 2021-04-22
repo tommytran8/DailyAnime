@@ -21,7 +21,7 @@ client.connect(function(err) {
   //retrieve data from server
   getDatabase(db, (docs)=>{
     //check if data is older than a day
-    if (docs[0] ? docs[0]["retrievedAt"] == getDate() : false){
+    if (docs && docs[0] ? docs[0]["retrievedAt"] == getDate() : false){
       console.log("Didn't need to scrape");
       app.get('/:data', (req,res)=>{
         res.send(docs);
@@ -36,7 +36,7 @@ client.connect(function(err) {
     }
     else {
       console.log("Starting scraping process...");
-      if (docs[0]){
+      if (docs && docs[0]){
         //remove data first before scraping
         clearDatabase(db, docs[0]["retrievedAt"],function(){
           scrapeMAL(db, function(data){
