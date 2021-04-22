@@ -12,7 +12,6 @@ function animeParse(url) {
         day: $('.borderClass > div > .spaceit',  html).children()[2].next.data.trim(),
         description:  $('.js-scrollfix-bottom-rel > table > tbody > tr > td > p', html).text(),
         url: url,
-        popularity: $('.score', html).attr("data-user"),
         retrievedAt: getDate()
       }
     })
