@@ -17,8 +17,9 @@ async function scrapeMAL(db, callback){
       for (let i = 0; i < length; i++) {
       animeURLs.push($('.h2_anime_title > .link-title', html)[i].attribs.href);
       }
+      const smallerURLS = animeURLs.slice(0,15);
       return Promise.all(
-          animeURLs.slice(0,30).map((url) =>{
+          smallerURLS.map((url) =>{
               return animeParse(url);
           })
       );
