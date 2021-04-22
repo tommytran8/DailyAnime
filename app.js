@@ -13,6 +13,12 @@ const url = process.env.MONGODB_URI || require("./env.json").URI;
 const dbName = 'DailyAnime';
 const client = new MongoClient(url);
 
+
+app.listen(process.env.PORT || 5500, () => {
+  console.log(`App listening at http://localhost:${5500}`);
+})
+
+
 // Use connect method to connect to the Database server
 client.connect(function(err) {
   console.log("Connected successfully to Database server");
@@ -29,9 +35,6 @@ client.connect(function(err) {
       app.get('/', (req,res)=>{ 
         res.sendFile('index.html');
       });
-      app.listen(process.env.PORT || 5500, () => {
-          console.log(`App listening at http://localhost:${5500}`);
-      })
       client.close();
     }
     else {
@@ -46,9 +49,6 @@ client.connect(function(err) {
             app.get('/', (req,res)=>{ 
               res.sendFile('index.html');
             });
-            app.listen(process.env.PORT || 5500, () => {
-                console.log(`App listening at http://localhost:${5500}`);
-            })
             client.close();
           });
         });
@@ -62,9 +62,6 @@ client.connect(function(err) {
           app.get('/', (req,res)=>{ 
             res.sendFile('index.html');
           });
-          app.listen(process.env.PORT || 5500, () => {
-              console.log(`App listening at http://localhost:${5500}`);
-          })
           client.close();
         });
       }
