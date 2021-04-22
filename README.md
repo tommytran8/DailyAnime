@@ -7,7 +7,7 @@ Website that categorizes the current seasonal Anime by the day that they broadca
 
 # Status
 
-https://git.heroku.com/dailyanimee.git
+https://dailyanimee.herokuapp.com/
 
 # Sample Images of Site
 
