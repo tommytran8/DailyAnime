@@ -4,12 +4,13 @@ const scrapeMAL = require("./functions/scrapeMAL");
 const clearDatabase = require("./functions/clearDatabase");
 const getDatabase = require("./functions/getDatabase");
 const getDate = require("./functions/getDate");
+const { URI } = require("./env.json");
 
 app.use(express.static('static'));
 
 // Start up Database
 const MongoClient = require('mongodb').MongoClient;
-const url = process.env.PORT ? `mongodb://localhost:${process.env.PORT}` : 'mongodb://localhost:27017';
+const url = URI;
 const dbName = 'DailyAnime';
 const client = new MongoClient(url);
 

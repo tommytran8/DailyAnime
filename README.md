@@ -7,8 +7,8 @@ Website that categorizes the current seasonal Anime by the day that they broadca
 
 # Status
 
-The site is currently not deployed!
-[[[](https://git.heroku.com/dailyanimee.git)](https://git.heroku.com/dailyanimee.git)](https://git.heroku.com/dailyanimee.git)
+https://git.heroku.com/dailyanimee.git
+
 # Sample Images of Site
 
 ## Sunday Tab
