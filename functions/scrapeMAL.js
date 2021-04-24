@@ -1,4 +1,4 @@
-function scrapeMAL(db, callback){
+async function scrapeMAL(db, callback){
   const rp = require('request-promise');
   const $ = require('cheerio');
   const fs = require('fs');
@@ -9,7 +9,7 @@ function scrapeMAL(db, callback){
   const collection = db.collection('documents');
 
 
-  rp(url)
+  await rp(url)
   .then( (html) => {
       //success!
       const animeURLs = [];
