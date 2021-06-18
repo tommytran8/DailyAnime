@@ -1,6 +1,6 @@
 async function scrapeMAL(db, callback){
   const rp = require('request-promise');
-  const $ = require('cheerio');
+  const cheerio = require('cheerio');
   const fs = require('fs');
   const url = 'https://myanimelist.net/anime/season';
   
@@ -13,9 +13,11 @@ async function scrapeMAL(db, callback){
   .then( (html) => {
       //success!
       const animeURLs = [];
-      const length =  $('.h2_anime_title', html).length;
+      const $ = cheerio.load(html);
+      // console.log($('.h2_anime_title > .link-title')[1].attribs.href);
+      const length =  $('.h2_anime_title').length;
       for (let i = 0; i < length; i++) {
-      animeURLs.push($('.h2_anime_title > .link-title', html)[i].attribs.href);
+      animeURLs.push($('.h2_anime_title > .link-title')[i].attribs.href);
       }
       return Promise.all(
           animeURLs.map((url) =>{
@@ -23,7 +25,7 @@ async function scrapeMAL(db, callback){
           })
       );
       // return Promise.all( //for testing
-      //   animeURLs.slice(0,3).map((url) =>{
+      //   animeURLs.slice(0,2).map((url) =>{
       //       return animeParse(url);
       //   })
       // );
@@ -39,8 +41,8 @@ async function scrapeMAL(db, callback){
         console.error(error);
     }
   })
-  .catch(function(){
-      console.error("Error in scraping");
+  .catch(function(e){
+      console.error(`Error in scraping: ${e}`);
   });
 }
 

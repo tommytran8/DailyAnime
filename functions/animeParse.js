@@ -1,23 +1,24 @@
 const rp = require('request-promise');
-const $ = require('cheerio');
+const cheerio = require('cheerio');
 const getDate = require("./getDate");
 
 function animeParse(url) {
   return rp(encodeURI(url))
     .then((html) => {
+      const $ = cheerio.load(html);
       return {
-        name: $('.title-name' , html).text(),
-        score: $('.score-label', html).text(),
-        imageURL: $('.borderClass img:nth-child(1)',  html).attr('data-src'),
-        day: $('.borderClass > div > .spaceit',  html).children()[2].next.data.trim(),
-        description:  $('.js-scrollfix-bottom-rel > table > tbody > tr > td > p', html).text(),
+        name: $('.title-name').text(),
+        score: $('.score-label').text(),
+        imageURL: $('.borderClass img:nth-child(1)').attr('data-src'),
+        day: $('.borderClass > div > .spaceit').children()[2].next.data.trim(),
+        description:  $('.js-scrollfix-bottom-rel > table > tbody > tr > td > p').text(),
         url: url,
         retrievedAt: getDate()
       }
     })
-    .catch(function() {
-      // console.error("error in converting scraped data to json");
-      return false
+    .catch(function(e) {
+      console.error("error in converting scraped data to json");
+      return e;
     })
 }
 
