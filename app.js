@@ -22,7 +22,7 @@ app.listen(process.env.PORT || 5500, () => {
 })
 
 
-// Use connect method to connect to the Database server
+// Connect to the Database server
 client.connect(function(err) {
   console.log("Connected successfully to Database server");
   const db = client.db(dbName);
@@ -50,6 +50,8 @@ client.connect(function(err) {
         app.get('/', (req,res)=>{ 
           res.sendFile('index.html');
         });
+
+        // NEED TO MAKE THIS SECTION ASYNC
 
         //scrape for updated data
         scrapeMAL(db, function(data){
