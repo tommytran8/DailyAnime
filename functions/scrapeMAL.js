@@ -1,4 +1,4 @@
-async function scrapeMAL(db, callback){
+function scrapeMAL(db, callback){
   const rp = require('request-promise');
   const cheerio = require('cheerio');
   const fs = require('fs');
@@ -9,7 +9,7 @@ async function scrapeMAL(db, callback){
   const collection = db.collection('documents');
 
 
-  await rp(url)
+  rp(url)
   .then( (html) => {
       //success!
       const animeURLs = [];
@@ -19,7 +19,7 @@ async function scrapeMAL(db, callback){
       for (let i = 0; i < length; i++) {
       animeURLs.push($('.h2_anime_title > .link-title')[i].attribs.href);
       }
-      return Promise.all(
+      return Promise.all( //MIGHT NEED TO CHANGE THIS
           animeURLs.map((url) =>{
               return animeParse(url);
           })
@@ -36,7 +36,7 @@ async function scrapeMAL(db, callback){
       collection.insertMany( titles, function(err, result) {
         console.log("Finished scraping MAL");
         callback(titles);
-      });    
+      });
     } catch (error) {
         console.error(error);
     }
