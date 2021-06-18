@@ -55,8 +55,10 @@ class Animecontainer extends HTMLElement {
             .description {
                 height: 150px;
                 overflow-y: auto;
-                padding: 5px;
-                border: 2px white solid;
+                padding-right: 5px;
+                // padding: 5px;
+                // border: 2px white solid;
+                // border-radius: 20px;
                 
             }
 

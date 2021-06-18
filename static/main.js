@@ -21,27 +21,23 @@ fetch(`${window.location.href}data`)
                     component.description.textContent = `Synposis : ${anime["description"]}`;
                     component.image.src = `${anime["imageURL"]}`;
 
-                    //use popularity to order the items in the days
+                    //uses popularity to order the items in the days
                     row.append(component);
                 }
             });
 
             document.getElementById(day).addEventListener('click', ()=>{
+                // set display of all anime to none
                 for (const component of document.getElementsByClassName("col-sm-12")) {
                     component.style.display = "none";
                 }
                 document.getElementsByClassName("col-sm-12")[0].style.display = "block";
+                // set display of anime wuth class <day> to block 
                 for (const component of document.getElementsByClassName(day)) {
                     component.style.display = "block";
                 }
             });
         });
-        for (const component of document.getElementsByClassName("col-sm-12")) {
-            component.style.display = "none";
-        }
-        document.getElementsByClassName("col-sm-12")[0].style.display = "block";
-        for (const component of document.getElementsByClassName("Sunday")) {
-            component.style.display = "block";
-        }
-
+        const today = new Date();
+        document.getElementById(`${days[today.getDay()]}`).click();
     });         

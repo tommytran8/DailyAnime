@@ -2,12 +2,23 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+.row {
+    /* border: 3px solid white; */
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+[class*="col"]:first-child {
+    border: 0px;
+}
+
 [class*="col"] {
-    padding: 1rem;
+    padding: .5rem;
     background-color: #54b6f1;
-    border: 2px solid white;
+    border: 1px solid white;
     color: white;
     /* text-align: center; */
+    margin: 5px;
 }
 button {
     font-family: 'Ubuntu', sans-serif;
