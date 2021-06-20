@@ -52,6 +52,9 @@ fetch(`${window.location.href}data`)
                     }
                 }
                 else {
+                    // resets search bar
+                    document.getElementById("search").value = null; 
+
                     // make all anime not visible
                     for (const component of document.getElementsByClassName("col-sm-12")) {
                         component.style.display = "none";

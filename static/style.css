@@ -29,4 +29,6 @@ button {
 #search {
     border: none;
     outline: none;
+    margin-bottom: 3px;
+    border-radius: 3px;
 }
