@@ -2,12 +2,6 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
-.row {
-    /* border: 3px solid white; */
-    /* border-top: 0px; */
-    /* border-bottom: 0px; */
-}
-
 [class*="col"]:first-child {
     border: 0px;
 }
@@ -32,7 +26,7 @@ button {
     justify-content: flex-end;
 }
 
-/* #MAL:hover {
-    background-color: #7ec8f7;
-    border-radius: 10%;
-} */
+#search {
+    border: none;
+    outline: none;
+}
