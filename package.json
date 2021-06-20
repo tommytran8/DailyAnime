@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "eslint": "eslint **/*.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "node test.js"
   },
   "keywords": [],
   "author": "",

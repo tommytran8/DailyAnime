@@ -41,39 +41,22 @@ client.connect(function(err) {
       client.close();
     }
     else {
+      //use existing database
+      app.get('/:data', (req,res)=>{
+        res.send(docs);
+      });
+      app.get('/', (req,res)=>{ 
+        res.sendFile('index.html');
+      });
+
       console.log("Starting scraping process...");
-      if (docs && docs[0]){
-        //use existing database
-        app.get('/:data', (req,res)=>{
-          res.send(docs);
-        });
-        app.get('/', (req,res)=>{ 
-          res.sendFile('index.html');
-        });
-
-        // NEED TO MAKE THIS SECTION ASYNC
-
-        //scrape for updated data
-        scrapeMAL(db, function(data){
-          //update database after scraping
-          clearDatabase(db, docs[0]["retrievedAt"],function(){
-            client.close();
-          });
-        });
-        
-      }
-      else {
-        //if data is empty, just start scraping
-        scrapeMAL(db, function(data){
-          app.get('/:data', (req,res)=>{
-            res.send(data);
-          });
-          app.get('/', (req,res)=>{ 
-            res.sendFile('index.html');
-          });
+      //scrape for updated data
+      scrapeMAL(db, function(data){
+        //update database after scraping
+        clearDatabase(db, docs[0]["retrievedAt"],function(){
           client.close();
         });
-      }
+      });
     }
   });
 });
