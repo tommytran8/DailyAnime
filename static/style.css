@@ -26,12 +26,13 @@ button {
     color: white;
 }
 
-#ALL {
+#MAL {
     border: none;
     background-color: #54b6f1;
+    justify-content: flex-end;
 }
 
-#ALL:hover {
+/* #MAL:hover {
     background-color: #7ec8f7;
     border-radius: 10%;
-}
+} */
