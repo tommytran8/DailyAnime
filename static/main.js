@@ -25,21 +25,23 @@ fetch(`${window.location.href}data`)
         
         //creates anime components and associate class with day
         data.forEach(anime => {
-            let component = document.createElement('anime-container');
-            let score = anime["score"].startsWith("N/A") ? "N/A" : anime["score"].slice(0, anime["score"].indexOf(".") + 3); //gets score to 3 figures
-            component.setAttribute("class", `col-sm-12 ${anime["day"].slice(0, anime["day"].indexOf("y") + 1)}`); //sets class to col-sm-12 and day
-            component.setAttribute("id", anime["name"]); // id used in seacrh bar
-            component.link.href = anime["url"];
-            component.link.target = "_blank";
-            component.name.textContent = `Title: ${anime["name"]}`;
-            component.score.textContent = `Score: ${score}`;
-            component.airs.textContent = `Boardcast : ${anime["day"]}`;
-            component.description.textContent = `Synposis : ${anime["description"]}`;
-            component.image.src = `${anime["imageURL"]}`;
+            // anime["day"] != "Unknown" &&
+            if (anime["day"] != "None found,"){
+                let component = document.createElement('anime-container');
+                let score = anime["score"].startsWith("N/A") ? "N/A" : anime["score"].slice(0, anime["score"].indexOf(".") + 3); //gets score to 3 figures
+                component.setAttribute("class", `col-sm-12 ${anime["day"].slice(0, anime["day"].indexOf("y") + 1)}`); //sets classlist to col-sm-12 and day
+                component.setAttribute("id", anime["name"]); // id used in seacrh bar
+                component.link.href = anime["url"];
+                component.link.target = "_blank";
+                component.name.textContent = `Title: ${anime["name"]}`;
+                component.score.textContent = `Score: ${score}`;
+                component.airs.textContent = `Boardcast : ${anime["day"]}`;
+                component.description.textContent = `Synposis : ${anime["description"]}`;
+                component.image.src = `${anime["imageURL"]}`;
 
-            //uses popularity to order the items in the days
-            row.append(component);
-
+                //uses popularity to order the items in the days
+                row.append(component);
+            }
         });
 
         //tabs will display anime according to day it broadcasts
