@@ -72,6 +72,26 @@ class Animecontainer extends HTMLElement {
                     flex-wrap: wrap;
                 }
               }
+
+            /* custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 18px;
+            }
+            
+            ::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background-color: rgba(255, 255, 255, 0.7);
+                border-radius: 20px;
+                border: 5px solid transparent;
+                background-clip: content-box;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: rgba(255, 255, 255, 1);
+            }
         `
         this.shadowRoot.append(style, container);
     }
