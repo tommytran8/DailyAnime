@@ -1,25 +1,25 @@
 {
   "name": "DailyAnime",
   "version": "1.0.0",
-  "description": "",
+  "description": "Broadcast day for seasonal anime",
   "main": "app.js",
   "scripts": {
     "eslint": "eslint **/*.js",
     "start": "node app.js",
-    "test": "node test.js"
+    "test": "node test.js",
+    "localtest": "node localtest.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
-    "eslint": "^7.24.0",
+    "eslint": "^7.32.0",
     "express": "^4.17.1",
-    "mongodb": "^3.6.6",
+    "mongodb": "^3.7.1",
+    "node-fetch": "^3.0.0",
     "path": "^0.12.7",
     "puppeteer": "^8.0.0",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6",
     "serve-favicon": "^2.5.0"
   }
 }

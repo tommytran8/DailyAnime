@@ -1,16 +1,17 @@
 function scrapeMAL(db, callback){
-  const rp = require('request-promise');
+  const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
   const cheerio = require('cheerio');
   const fs = require('fs');
   const url = 'https://myanimelist.net/anime/season';
+  const response = await fetch(url);
   
 
   const animeParse = require('./animeParse');
   const collection = db.collection('documents');
 
 
-  rp(url)
-  .then( (html) => {
+  await response.text()
+    .then((html)=>{
       //success!
       const animeURLs = [];
       const $ = cheerio.load(html);
@@ -19,16 +20,11 @@ function scrapeMAL(db, callback){
       for (let i = 0; i < length; i++) {
       animeURLs.push($('.h2_anime_title > .link-title')[i].attribs.href);
       }
-      return Promise.all( 
+      return Promise.all(  //for deployment
           animeURLs.map((url) =>{
               return animeParse(url);
           })
       );
-      // return Promise.all( //for testing
-      //   animeURLs.slice(0,2).map((url) =>{
-      //       return animeParse(url);
-      //   })
-      // );
      
   })
   .then(function(titles) { //recieves the return and prints the Promise.all
