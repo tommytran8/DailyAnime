@@ -8,7 +8,7 @@ const getDate = require("./functions/getDate");
 app.use(express.static('static'));
 
 // Start up Database
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
 const url = process.env.MONGODB_URI || require("./env.json").URI;
 const dbName = 'DailyAnime';
 const client = new MongoClient(url);
@@ -49,13 +49,16 @@ client.connect(function(err) {
         res.sendFile('index.html');
       });
 
-      console.log("Starting scraping process...");
+      console.log("Needs to update data. Starting scraping process...");
       //scrape for updated data
       scrapeMAL(db, function(data){
-        //update database after scraping
-        clearDatabase(db, docs[0]["retrievedAt"],function(){
-          client.close();
-        });
+        if (docs && docs[0]) {
+          //update database after scraping
+          clearDatabase(db, docs[0]["retrievedAt"] ,function(){
+            client.close();
+          });
+        }
+        else client.close();
       });
     }
   });

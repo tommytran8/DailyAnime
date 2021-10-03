@@ -1,4 +1,4 @@
-function scrapeMAL(db, callback){
+async function scrapeMAL(db, callback){
   const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
   const cheerio = require('cheerio');
   const fs = require('fs');
@@ -20,6 +20,12 @@ function scrapeMAL(db, callback){
       for (let i = 0; i < length; i++) {
       animeURLs.push($('.h2_anime_title > .link-title')[i].attribs.href);
       }
+      // return Promise.all( //for small sample testing 
+      //   animeURLs.slice(0,2).map((url) =>{
+      //       return animeParse(url);
+            
+      //   })
+      // );
       return Promise.all(  //for deployment
           animeURLs.map((url) =>{
               return animeParse(url);
@@ -29,8 +35,9 @@ function scrapeMAL(db, callback){
   })
   .then(function(titles) { //recieves the return and prints the Promise.all
     try {
+      // console.log(titles);
       collection.insertMany( titles, function(err, result) {
-        console.log("Finished scraping MAL");
+        console.log("Finished scraping MAL, adding data to database");
         callback(titles);
       });
     } catch (error) {

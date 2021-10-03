@@ -9,7 +9,7 @@ async function animeParse(url) {
       const $ = cheerio.load(html);
 
 
-      let day = null;
+      let day = "Unknown";
       for (const [key, value] of Object.entries($('.borderClass > div > .spaceit_pad').children())) {
         let temp = $('.borderClass > div > .spaceit_pad').children()[key];
         if (temp.next && temp.next.data && temp.next.data.includes("days")) {
